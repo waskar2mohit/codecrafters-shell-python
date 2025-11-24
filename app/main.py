@@ -7,14 +7,13 @@ def main():
         sys.stdout.write("$ ")
         command = input()
         if command != "hello" and command!="exit" and command[:4] != "echo" and command[:4]!="type":
-            print(f"{command}: command not found")
+            print(f"{command}: not found")
         elif command[:4] == "echo":
             print(command[5:])
         elif command[:4]=="type":
             if command [5:] == "exit" or  command [5:] == "echo" or command [5:] == "type":
                 print(f"{command[5:]} is a shell builtin")
         else:
-            print(f"{command}: not found")
             break
         pass
     #echo is a shell builtin

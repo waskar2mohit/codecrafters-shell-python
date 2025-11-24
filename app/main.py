@@ -10,9 +10,13 @@ def main():
             print(f"{command}: command not found")
         elif command[:4] == "echo":
             print(command[5:])
+        elif command[:4]=="type":
+            if command [5:] == "exit" and  command [5:] == "echo":
+                print(f"{command[5:]} is a shell builtin")
         else:
             break
         pass
+    #echo is a shell builtin
 
 
 if __name__ == "__main__":

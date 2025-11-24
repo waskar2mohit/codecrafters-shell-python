@@ -8,6 +8,8 @@ def main():
         command = input()
         if command != "hello" and command!="exit":
             print(f"{command}: command not found")
+        elif command == "echo":
+            print(command[3:])
         else:
             break
         pass

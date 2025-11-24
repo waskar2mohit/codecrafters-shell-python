@@ -6,9 +6,9 @@ def main():
     while(True):
         sys.stdout.write("$ ")
         command = input()
-        if command != "hello" and command!="exit" and command != "echo":
+        if command != "hello" and command!="exit" and command != f"{command[:4]}":
             print(f"{command}: command not found")
-        elif command == "echo":
+        elif command == f"{command[:4]}":
             print(command[4:])
         else:
             break

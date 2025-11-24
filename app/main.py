@@ -15,7 +15,8 @@ def main():
                 print(f"{command[5:]} is a shell builtin")
             else:
                 print(f"{command[5:]}: not found")
-                break
+        else:
+            break
         pass
     #echo is a shell builtin
 

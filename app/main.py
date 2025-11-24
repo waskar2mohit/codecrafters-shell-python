@@ -8,7 +8,7 @@ def main():
         command = input()
         if command != "hello":
             print(f"{command}: command not found")
-        else:
+        elif command == "exit":
             break
         pass
 

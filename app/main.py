@@ -9,7 +9,7 @@ def main():
         if command != "hello" and command!="exit":
             print(f"{command}: command not found")
         elif command == "echo":
-            print(command[3:])
+            print(command[4:])
         else:
             break
         pass

@@ -15,7 +15,7 @@ def main():
             if command [5:] == "exit" or  command [5:] == "echo" or command [5:] == "type":
                 print(f"{command[5:]} is a shell builtin")
             elif command [5:] != "exit" or  command [5:] != "echo" or command [5:] != "type":
-                filePath = glob.glob("C:/Users/Mohit Waskar/**/*.exe", recursive=True)
+                filePath = glob.glob("C:/Users/Mohit Waskar/.exe", recursive=True)
                 print(f"{command[5:]} is {filePath}")
             else:
                 print(f"{command[5:]}: not found")

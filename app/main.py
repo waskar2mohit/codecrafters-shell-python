@@ -1,5 +1,7 @@
 import sys
 import shutil
+import os
+from distutils.spawn import find_executable
 
 
 BUILTINS = {"exit", "echo", "type"}
@@ -31,12 +33,9 @@ def main():
                     print(f"{name}: not found")
             continue
 
-        else:
-            splitedCom = command.split()
-            print(f"Program was passed {len(splitedCom)} args (including program name).")
-            print(f"Arg #{0} (program name): {splitedCom[0]}")
-            for i in range(1,len(splitedCom)):
-                print(f"Arg #{i}: {splitedCom[i]}")
+        elif find_executable(command.split(" ")[0]):
+             os.system(command)
+            
 
 
 

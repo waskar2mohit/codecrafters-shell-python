@@ -8,7 +8,7 @@ BUILTINS = {"exit", "echo", "type"}
 def main():
     while True:
         sys.stdout.write("$ ")
-        command = input().strip()
+        command = input()
         if not command:
             continue
 
@@ -31,7 +31,14 @@ def main():
                     print(f"{name}: not found")
             continue
 
-        print(f"{command}: not found")
+        else:
+            splitedCom = command.split()
+            print(f"Program was passed {len(splitedCom)} args (including program name).")
+            print(f"Arg #{0} (program name): {splitedCom[0]}")
+            for i in range(1,len(splitedCom)):
+                print(f"Arg #{i}: {splitedCom[i]}")
+
+
 
 
 if __name__ == "__main__":

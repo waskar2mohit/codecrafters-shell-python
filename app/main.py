@@ -1,7 +1,7 @@
 import sys
 import shutil
 import os
-from distutils.spawn import find_executable
+
 
 
 BUILTINS = {"exit", "echo", "type"}
@@ -33,7 +33,7 @@ def main():
                     print(f"{name}: not found")
             continue
 
-        elif find_executable(command.split(" ")[0]):
+        elif shutil.which(command.split(" ")[0]):
              os.system(command)
             
 

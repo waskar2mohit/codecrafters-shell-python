@@ -14,7 +14,7 @@ def main():
         elif command[:4]=="type":
             if command [5:] == "exit" or  command [5:] == "echo" or command [5:] == "type":
                 print(f"{command[5:]} is a shell builtin")
-            elif command [5:] != "exit" or  command [5:] != "echo" or command [5:] == "type":
+            elif command [5:] != "exit" or  command [5:] != "echo" or command [5:] != "type":
                 path = shutil.which(command[5:])
                 print(f"{command[5:]} is {path}")
             else:

@@ -2,27 +2,36 @@ import sys
 import shutil
 
 
+BUILTINS = {"exit", "echo", "type"}
+
+
 def main():
-    # TODO: Uncomment the code below to pass the first stage
-    while(True):
+    while True:
         sys.stdout.write("$ ")
-        command = input()
-        if command != "hello" and command!="exit" and command[:4] != "echo" and command[:4]!="type":
-            print(f"{command}: not found")
-        elif command[:4] == "echo":
-            print(command[5:])
-        elif command[:4]=="type":
-            if command [5:] == "exit" or  command [5:] == "echo" or command [5:] == "type":
-                print(f"{command[5:]} is a shell builtin")
-            elif command [5:] != "exit" or  command [5:] != "echo" or command [5:] != "type":
-                path = shutil.which(command[5:])
-                print(f"{command[5:]} is {path}")
-            
-        else:
-            print(f"{command[5:]}: not found")
+        command = input().strip()
+        if not command:
+            continue
+
+        if command == "exit":
             break
-        pass
-    #echo is a shell builtin
+
+        if command.startswith("echo "):
+            print(command[5:])
+            continue
+
+        if command.startswith("type "):
+            name = command[5:]
+            if name in BUILTINS:
+                print(f"{name} is a shell builtin")
+            else:
+                path = shutil.which(name)
+                if path:
+                    print(f"{name} is {path}")
+                else:
+                    print(f"{name}: not found")
+            continue
+
+        print(f"{command}: not found")
 
 
 if __name__ == "__main__":

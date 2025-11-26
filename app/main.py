@@ -17,9 +17,9 @@ def main():
             elif command [5:] != "exit" or  command [5:] != "echo" or command [5:] != "type":
                 path = shutil.which(command[5:])
                 print(f"{command[5:]} is {path}")
-            else:
-                print(f"{command[5:]}: not found")
+            
         else:
+            print(f"{command[5:]}: not found")
             break
         pass
     #echo is a shell builtin

@@ -33,8 +33,11 @@ def main():
                     print(f"{name}: not found")
             continue
 
-        elif shutil.which(command.split(" ")[0]):
-             os.system(command)
+        else :
+            if shutil.which(command.split(" ")[0]):
+                os.system(command)
+            else:
+                print(f"{name}: not found")
             
 
 

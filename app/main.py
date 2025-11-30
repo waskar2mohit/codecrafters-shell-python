@@ -22,7 +22,6 @@ def main():
             commandArr = shlex.split()
             for c in commandArr:
                 print(c) 
-            print(command[5:])
             continue
 
         if command.startswith("type "):

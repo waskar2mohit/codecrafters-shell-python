@@ -19,7 +19,7 @@ def main():
             break
 
         if command.startswith("echo "):
-            commandArr = shlex.split()
+            commandArr = shlex.split(command)
             for c in commandArr:
                 print(c) 
             continue

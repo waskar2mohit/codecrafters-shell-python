@@ -18,6 +18,7 @@ def main():
             break
 
         if command.startswith("echo "):
+            command = command.replace("'","")
             print(command[5:])
             continue
 

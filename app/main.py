@@ -70,9 +70,9 @@ def main():
             print(f"{cmd}: not found")
             continue
 
-        # Run the external executable
         try:
-            subprocess.run([exe] + args)
+            subprocess.run([cmd] + args, executable=exe)
+
         except Exception as e:
             print(f"Error executing {cmd}: {e}")
 

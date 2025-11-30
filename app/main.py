@@ -21,7 +21,7 @@ def main():
         if command.startswith("echo "):
             commandArr = shlex.split(command[5:])
             for c in commandArr:
-                print(c,end='') 
+                print(c,end=' ') 
             continue
 
         if command.startswith("type "):

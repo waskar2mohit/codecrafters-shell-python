@@ -1,6 +1,7 @@
 import sys
 import shutil
 import os
+import shlex
 
 
 
@@ -18,8 +19,9 @@ def main():
             break
 
         if command.startswith("echo "):
-            command = command.replace("'","")
-            command = " ".join(command.split())
+            commandArr = shlex.split()
+            for c in commandArr:
+                print(c) 
             print(command[5:])
             continue
 

@@ -18,7 +18,8 @@ def main():
             break
 
         if command.startswith("echo "):
-            command = command.replace("'",'')
+            command = command.replace("'","")
+            command = " ".join(command.split())
             print(command[5:])
             continue
 

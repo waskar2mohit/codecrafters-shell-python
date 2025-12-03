@@ -1,9 +1,7 @@
 import sys
-import shutil
 import os
 import shlex
 import subprocess
-
 
 BUILTINS = {"exit", "echo", "type"}
 
@@ -48,7 +46,6 @@ def main():
 
         if cmd == "echo":
             # echo does NOT interpret redirections; shell does
-            # so we handle redirection here as well
             stdout_target = None
             cleaned_args = []
             i = 0
@@ -117,22 +114,21 @@ def main():
         while i < len(args):
             tok = args[i]
             if tok in (">", "1>"):
+                # need a filename after > / 1>
                 if i + 1 >= len(args):
-                    print("redirection: missing filename")
-                    stdout_target = None
                     cleaned_args = []
                     break
                 filename = args[i + 1]
+
+                # create parent directory if needed
                 dir_name = os.path.dirname(filename)
                 if dir_name:
                     os.makedirs(dir_name, exist_ok=True)
-                try:
-                    stdout_target = open(filename, "w")
-                except OSError as e:
-                    print(f"redirection: {e}")
-                    stdout_target = None
-                    cleaned_args = []
-                    break
+
+                # open target file for stdout
+                stdout_target = open(filename, "w")
+
+                # skip both '>' and filename
                 i += 2
             else:
                 cleaned_args.append(tok)
@@ -143,8 +139,7 @@ def main():
                 [cmd] + cleaned_args,
                 executable=exe,
                 stdout=stdout_target if stdout_target is not None else None,
-                # stderr stays on terminal so errors like "cat: nonexistent" still print
-                stderr=None
+                stderr=None  # stderr to terminal
             )
         except Exception as e:
             print(f"Error executing {cmd}: {e}")
